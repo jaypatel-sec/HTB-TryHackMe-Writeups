@@ -1,9 +1,16 @@
 # HTB and TryHackMe Writeups — Jay Patel
 
-Full walkthroughs for every retired HackTheBox machine and TryHackMe room completed.
-Every writeup includes enumeration, foothold, privilege escalation, a detection layer, and MITRE ATT&CK mapping.
+I am an aspiring penetration tester working through HTB Academy CPTS toward OSCP.
+Every writeup in this repo documents not just how I attacked a system — but what
+the blue team would see. MITRE technique, log source, and SIEM detection query
+are included on every single technique.
 
-HTB writeups are only committed after a machine is confirmed retired.
+Understanding both sides of an attack is not optional for a good pentester.
+It makes your reports more credible, your risk scoring more accurate, and your
+findings more actionable for the defensive teams you are reporting to.
+This is intentional — not accidental.
+
+HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
@@ -63,11 +70,11 @@ HTB writeups are only committed after a machine is confirmed retired.
 
 ---
 
-## TryHackMe — Other
+## TryHackMe — Rooms
 
 | Room | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
-| Simple CTF | Easy | FTP anon, SQLi CVE-2019-9053, sudo vim | March 2026 | [writeup](TryHackMe/Other/Simple-CTF.md) |
+| Simple CTF | Easy | FTP anon, SQLi CVE-2019-9053, sudo vim | March 2026 | [writeup](TryHackMe/Rooms/Simple-CTF.md) |
 
 ---
 
@@ -82,5 +89,5 @@ HTB writeups are only committed after a machine is confirmed retired.
 | HTB Active Directory | 0 | 5+ |
 | HTB Web | 0 | 5+ |
 | TryHackMe SOC Level 1 | 0 | 10+ |
-| TryHackMe Other | 1 | Ongoing |
+| TryHackMe Rooms | 1 | Ongoing |
 | **Total** | **1** | **35+** |
