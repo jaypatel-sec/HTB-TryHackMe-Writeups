@@ -65,9 +65,9 @@ HTB writeups are only committed after a machine is confirmed retired.
 
 ## TryHackMe — Other
 
-| Room | Category | Date | Writeup |
-|---|---|---|---|
-| — | — | — | — |
+| Room | Difficulty | Key Technique | Date | Writeup |
+|---|---|---|---|---|
+| Simple CTF | Easy | FTP anon, SQLi CVE-2019-9053, sudo vim | March 2026 | [writeup](TryHackMe/Other/Simple-CTF.md) |
 
 ---
 
@@ -82,5 +82,5 @@ HTB writeups are only committed after a machine is confirmed retired.
 | HTB Active Directory | 0 | 5+ |
 | HTB Web | 0 | 5+ |
 | TryHackMe SOC Level 1 | 0 | 10+ |
-| TryHackMe Other | 0 | Ongoing |
-| **Total** | **0** | **35+** |
+| TryHackMe Other | 1 | Ongoing |
+| **Total** | **1** | **35+** |
