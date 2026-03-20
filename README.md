@@ -75,6 +75,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Room | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
 | Simple CTF | Easy | FTP anon, SQLi CVE-2019-9053, sudo vim | March 2026 | [writeup](TryHackMe/Rooms/Simple-CTF.md) |
+| Bounty Hacker | Easy | FTP anon, Hydra SSH brute force, sudo tar | March 2026 | [writeup](TryHackMe/Rooms/Bounty-Hacker.md) |
 
 ---
 
@@ -89,5 +90,5 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe SOC Level 1 | 0 | 10+ |
-| TryHackMe Rooms | 1 | Ongoing |
-| **Total** | **1** | **40+** |
+| TryHackMe Rooms | 2 | Ongoing |
+| **Total** | **2** | **40+** |
