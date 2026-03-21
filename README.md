@@ -13,15 +13,15 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ### Easy
 
-| Machine | Key Technique | MITRE | Date | Writeup |
-|---|---|---|---|---|
-| — | — | — | — | — |
+| Machine | Key Technique | Date | Writeup |
+|---|---|---|---|
+| — | — | — | — |
 
 ### Medium
 
-| Machine | Key Technique | MITRE | Date | Writeup |
-|---|---|---|---|---|
-| — | — | — | — | — |
+| Machine | Key Technique | Date | Writeup |
+|---|---|---|---|
+| — | — | — | — |
 
 ---
 
@@ -29,37 +29,29 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ### Easy
 
-| Machine | Key Technique | MITRE | Date | Writeup |
-|---|---|---|---|---|
-| — | — | — | — | — |
+| Machine | Key Technique | Date | Writeup |
+|---|---|---|---|
+| — | — | — | — |
 
 ### Medium
 
-| Machine | Key Technique | MITRE | Date | Writeup |
-|---|---|---|---|---|
-| — | — | — | — | — |
+| Machine | Key Technique | Date | Writeup |
+|---|---|---|---|
+| — | — | — | — |
 
 ---
 
 ## HTB — Active Directory
 
-| Machine | Key Technique | MITRE | Date | Writeup |
-|---|---|---|---|---|
-| — | — | — | — | — |
+| Machine | Key Technique | Date | Writeup |
+|---|---|---|---|
+| — | — | — | — |
 
 ---
 
 ## HTB — Web Challenges
 
-| Challenge | Key Technique | MITRE | Date | Writeup |
-|---|---|---|---|---|
-| — | — | — | — | — |
-
----
-
-## TryHackMe — SOC Level 1
-
-| Room | Category | Date | Writeup |
+| Challenge | Key Technique | Date | Writeup |
 |---|---|---|---|
 | — | — | — | — |
 
@@ -85,6 +77,5 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Windows Medium | 0 | 5+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
-| TryHackMe SOC Level 1 | 0 | 10+ |
 | TryHackMe Rooms | 3 | Ongoing |
 | **Total** | **3** | **40+** |
