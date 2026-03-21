@@ -1,14 +1,9 @@
 # HTB and TryHackMe Writeups — Jay Patel
 
 I am an aspiring penetration tester working through HTB Academy CPTS toward OSCP.
-Every writeup in this repo documents not just how I attacked a system — but what
-the blue team would see. MITRE technique, log source, and SIEM detection query
-are included on every single technique.
-
-Understanding both sides of an attack is not optional for a good pentester.
-It makes your reports more credible, your risk scoring more accurate, and your
-findings more actionable for the defensive teams you are reporting to.
-This is intentional — not accidental.
+Every writeup in this repo documents the full attack path — enumeration,
+exploitation, and privilege escalation — with the commands, reasoning, and
+lessons learned at each step.
 
 HTB writeups are only published after a machine is confirmed retired.
 
@@ -76,6 +71,7 @@ HTB writeups are only published after a machine is confirmed retired.
 |---|---|---|---|---|
 | Simple CTF | Easy | FTP anon, SQLi CVE-2019-9053, sudo vim | March 2026 | [writeup](TryHackMe/Rooms/Simple-CTF.md) |
 | Bounty Hacker | Easy | FTP anon, Hydra SSH brute force, sudo tar | March 2026 | [writeup](TryHackMe/Rooms/Bounty-Hacker.md) |
+| Basic Pentesting | Easy | SMB enum, SSH brute force, world-readable id_rsa, ssh2john | March 2026 | [writeup](TryHackMe/Rooms/Basic-Pentesting.md) |
 
 ---
 
@@ -90,5 +86,5 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe SOC Level 1 | 0 | 10+ |
-| TryHackMe Rooms | 2 | Ongoing |
-| **Total** | **2** | **40+** |
+| TryHackMe Rooms | 3 | Ongoing |
+| **Total** | **3** | **40+** |
