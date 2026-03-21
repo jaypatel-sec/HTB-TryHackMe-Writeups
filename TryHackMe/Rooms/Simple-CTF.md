@@ -395,40 +395,6 @@ should be open in a tab the moment you get a shell on any system.
 
 ---
 
-## Detection Layer
-
-| Attack Stage | MITRE Technique | Log Source | Detection Signal |
-|---|---|---|---|
-| FTP anonymous login | T1078.001 | FTP server logs | Anonymous auth followed by file download |
-| Web directory brute force | T1083 | Apache access logs | High volume 404s from single IP in short window |
-| SQL injection exploit | T1190 | Web app logs | Repeated malformed GET requests to News module |
-| SSH login with password | T1078 | Auth.log | SSH login from new external IP using password auth |
-| sudo abuse via vim | T1548.003 | Auth.log / sudolog | sudo vim execution by non-admin user |
-
-**SPL Query — detect anonymous FTP download:**
-```spl
-index=ftp_logs action=download user=anonymous
-| stats count by src_ip, filename
-| sort -count
-```
-
-**KQL Query (Sentinel) — detect sudo abuse:**
-```kql
-Syslog
-| where SyslogMessage contains "sudo" and SyslogMessage contains "vim"
-| summarize Count=count() by Computer, SyslogMessage
-| sort by Count desc
-```
-
-**MITRE Techniques:**
-- T1078.001 — Valid Accounts: Default Accounts (anonymous FTP)
-- T1083 — File and Directory Discovery
-- T1190 — Exploit Public-Facing Application (CVE-2019-9053)
-- T1078 — Valid Accounts (SSH with recovered credentials)
-- T1548.003 — Abuse Elevation Control Mechanism: Sudo and Sudo Caching
-
----
-
 ## Full Attack Chain Reference
 
 ```
