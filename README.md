@@ -64,6 +64,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Simple CTF | Easy | FTP anon, SQLi CVE-2019-9053, sudo vim | March 2026 | [writeup](TryHackMe/Rooms/Simple-CTF.md) |
 | Bounty Hacker | Easy | FTP anon, Hydra SSH brute force, sudo tar | March 2026 | [writeup](TryHackMe/Rooms/Bounty-Hacker.md) |
 | Basic Pentesting | Easy | SMB enum, SSH brute force, world-readable id_rsa, ssh2john | March 2026 | [writeup](TryHackMe/Rooms/Basic-Pentesting.md) |
+| Fowsniff CTF | Easy |  OSINT, POP3 brute force, MOTD cube.sh privesc | March 2026 | [writeup](TryHackMe/Rooms/Fowsniff-CTF.md) |
 
 ---
 
@@ -77,5 +78,5 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Windows Medium | 0 | 5+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
-| TryHackMe Rooms | 3 | Ongoing |
-| **Total** | **3** | **40+** |
+| TryHackMe Rooms | 4 | Ongoing |
+| **Total** | **4** | **40+** |
