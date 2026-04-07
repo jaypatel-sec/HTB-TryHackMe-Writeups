@@ -11,33 +11,17 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ## HTB Machines — Linux
 
-### Easy
-
-| Machine | Key Technique | Date | Writeup |
-|---|---|---|---|
-| — | — | — | — |
-
-### Medium
-
-| Machine | Key Technique | Date | Writeup |
-|---|---|---|---|
-| — | — | — | — |
+| Machine | Difficulty | Key Technique | Date | Writeup |
+|---|---|---|---|---|
+| — | — | — | — | — |
 
 ---
 
 ## HTB Machines — Windows
 
-### Easy
-
-| Machine | Key Technique | Date | Writeup |
-|---|---|---|---|
-| — | — | — | — |
-
-### Medium
-
-| Machine | Key Technique | Date | Writeup |
-|---|---|---|---|
-| — | — | — | — |
+| Machine | Difficulty | Key Technique | Date | Writeup |
+|---|---|---|---|---|
+| — | — | — | — | — |
 
 ---
 
@@ -73,10 +57,8 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux Easy | 0 | 10+ |
-| HTB Linux Medium | 0 | 5+ |
-| HTB Windows Easy | 0 | 5+ |
-| HTB Windows Medium | 0 | 5+ |
+| HTB Linux | 0 | 15+ |
+| HTB Windows | 0 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 5 | Ongoing |
