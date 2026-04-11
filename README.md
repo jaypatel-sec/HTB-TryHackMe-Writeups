@@ -13,7 +13,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Machine | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
-| — | — | — | — | — |
+| Postman | Easy | Redis unauthenticated file write, SSH key injection, ssh2john, Webmin 1.910 RCE (CVE-2019-12840) | April 2026 | [writeup](HTB-Machines/Linux/Postman.md) |
 
 ---
 
@@ -57,9 +57,9 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 0 | 15+ |
+| HTB Linux | 1 | 15+ |
 | HTB Windows | 0 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 5 | Ongoing |
-| **Total** | **5** | **40+** |
+| **Total** | **6** | **40+** |
