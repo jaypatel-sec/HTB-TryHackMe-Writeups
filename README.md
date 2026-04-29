@@ -8,39 +8,75 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB Machines — Linux
+## Progress
+
+| Category | Completed | Target |
+|---|---|---|
+| HTB Linux | 1 | 15+ |
+| HTB Windows | 0 | 10+ |
+| HTB Active Directory | 0 | 10+ |
+| HTB Web Challenges | 0 | 9+ |
+| TryHackMe Rooms | 8 | Ongoing |
+| **Total** | **9** | **40+** |
+
+---
+
+## HTB Machines — Linux · 1 completed
+
+<details>
+<summary>View writeups</summary>
 
 | Machine | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
 | Postman | Easy | Redis unauthenticated file write, SSH key injection, ssh2john, Webmin 1.910 RCE (CVE-2019-12840) | April 2026 | [writeup](HTB-Machines/Linux/Postman.md) |
 
+</details>
+
 ---
 
-## HTB Machines — Windows
+## HTB Machines — Windows · 0 completed
+
+<details>
+<summary>View writeups</summary>
 
 | Machine | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
 | — | — | — | — | — |
 
+</details>
+
 ---
 
-## HTB — Active Directory
+## HTB — Active Directory · 0 completed
+
+<details>
+<summary>View writeups</summary>
 
 | Machine | Key Technique | Date | Writeup |
 |---|---|---|---|
 | — | — | — | — |
 
+</details>
+
 ---
 
-## HTB — Web Challenges
+## HTB — Web Challenges · 0 completed
+
+<details>
+<summary>View writeups</summary>
 
 | Challenge | Key Technique | Date | Writeup |
 |---|---|---|---|
 | — | — | — | — |
 
+</details>
+
 ---
 
-## TryHackMe — Rooms
+## TryHackMe — Rooms · 8 completed
+
+<details>
+<summary>View writeups</summary>
 
 | Room | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
@@ -53,15 +89,4 @@ HTB writeups are only published after a machine is confirmed retired.
 | UltraTech | Medium | Full port scan, JS source review, OS command injection (backtick), SQLite exfil via nc, MD5 cracking, Docker group privesc | April 2026 | [writeup](TryHackMe/Rooms/UltraTech.md) |
 | Anonymous | Medium | FTP anon login + world-writable cron script → reverse shell, LXD group privesc (Alpine image build → privileged container → host filesystem mount) | April 2026 | [writeup](TryHackMe/Rooms/Anonymous.md) |
 
----
-
-## Progress
-
-| Category | Completed | Target |
-|---|---|---|
-| HTB Linux | 1 | 15+ |
-| HTB Windows | 0 | 10+ |
-| HTB Active Directory | 0 | 10+ |
-| HTB Web Challenges | 0 | 9+ |
-| TryHackMe Rooms | 8 | Ongoing |
-| **Total** | **9** | **40+** |
+</details>
