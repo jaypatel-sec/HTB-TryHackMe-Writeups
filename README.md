@@ -52,6 +52,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Kenobi | Easy | SMB anon, NFS enum, ProFTPD mod_copy CVE-2015-3306, SUID PATH hijack | April 2026 | [writeup](TryHackMe/Rooms/Kenobi.md) |
 | CMesS | Medium | VHost fuzzing, Gila CMS file upload RCE, world-readable .password.bak, tar wildcard injection | April 2026 | [writeup](TryHackMe/Rooms/CMesS.md) |
 | UltraTech | Medium | Full port scan, JS source review, OS command injection (backtick), SQLite exfil via nc, MD5 cracking, Docker group privesc | April 2026 | [writeup](TryHackMe/Rooms/UltraTech.md) |
+| Anonymous | Medium | FTP anon login + world-writable cron script → reverse shell, LXD group privesc (Alpine image build → privileged container → host filesystem mount) | April 2026 | [writeup](TryHackMe/Rooms/Anonymous.md) |
 
 ---
 
@@ -63,5 +64,5 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Windows | 0 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
-| TryHackMe Rooms | 7 | Ongoing |
-| **Total** | **8** | **40+** |
+| TryHackMe Rooms | 8 | Ongoing |
+| **Total** | **9** | **40+** |
