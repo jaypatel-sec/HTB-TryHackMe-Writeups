@@ -1,9 +1,8 @@
 # HTB and TryHackMe Writeups — Jay Patel
 
-I am a penetration tester working through HTB Academy CPTS toward OSCP.
-Every writeup in this repo documents the full attack path — enumeration,
-exploitation, and privilege escalation — with the commands, reasoning, and
-lessons learned at each step.
+Building toward a penetration testing career through HTB Academy CPTS and hands-on lab work.
+Every writeup in this repo documents the full attack path — enumeration, exploitation, and
+privilege escalation — with the exact commands, reasoning, and lessons learned at each step.
 
 HTB writeups are only published after a machine is confirmed retired.
 
