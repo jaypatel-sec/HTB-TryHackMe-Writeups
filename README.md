@@ -12,22 +12,23 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 1 | 15+ |
+| HTB Linux | 2 | 15+ |
 | HTB Windows | 0 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 8 | Ongoing |
-| **Total** | **9** | **40+** |
+| **Total** | **10** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 1 completed
+## HTB Machines — Linux · 2 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Machine | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
+| Underpass | Easy | UDP scan → SNMP default community string → daloRADIUS default creds → MD5 crack → mosh-server sudo privesc | April 2026 | [writeup](HTB-Machines/Linux/Underpass.md) |
 | Postman | Easy | Redis unauthenticated file write, SSH key injection, ssh2john, Webmin 1.910 RCE (CVE-2019-12840) | April 2026 | [writeup](HTB-Machines/Linux/Postman.md) |
 
 </details>
