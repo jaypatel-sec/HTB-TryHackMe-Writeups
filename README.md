@@ -12,22 +12,23 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 2 | 15+ |
+| HTB Linux | 3 | 15+ |
 | HTB Windows | 0 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 8 | Ongoing |
-| **Total** | **10** | **40+** |
+| **Total** | **11** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 2 completed
+## HTB Machines — Linux · 3 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Machine | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
+| Valentine | Easy | Heartbleed (CVE-2014-0160) memory leak → SSH key decryption → tmux root socket | April 2026 | [writeup](HTB-Machines/Linux/Valentine.md) |
 | Underpass | Easy | UDP scan → SNMP default community string → daloRADIUS default creds → MD5 crack → mosh-server sudo privesc | April 2026 | [writeup](HTB-Machines/Linux/Underpass.md) |
 | Postman | Easy | Redis unauthenticated file write, SSH key injection, ssh2john, Webmin 1.910 RCE (CVE-2019-12840) | April 2026 | [writeup](HTB-Machines/Linux/Postman.md) |
 
