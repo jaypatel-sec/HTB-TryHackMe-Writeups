@@ -13,11 +13,11 @@ HTB writeups are only published after a machine is confirmed retired.
 | Category | Completed | Target |
 |---|---|---|
 | HTB Linux | 3 | 15+ |
-| HTB Windows | 0 | 10+ |
+| HTB Windows | 1 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 8 | Ongoing |
-| **Total** | **11** | **40+** |
+| **Total** | **12** | **40+** |
 
 ---
 
@@ -36,14 +36,14 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB Machines — Windows · 0 completed
+## HTB Machines — Windows · 1 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Machine | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
-| — | — | — | — | — |
+| Legacy | Easy | MS08-067 (CVE-2008-4250) — pre-auth RCE via SMB netapi32.dll stack overflow → NT AUTHORITY\SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Legacy.md) |
 
 </details>
 
