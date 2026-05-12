@@ -454,8 +454,8 @@ cf37e46838acf7991729c951bef70b98
 
 | Flag | Location | Hash |
 |---|---|---|
-| **user.txt** | `/home/arrexel/user.txt` | `2c281f318555dbc1b856957c7147bfc1` |
-| **root.txt** | `/root/root.txt` | `cc4f0afe3a1026d402ba10329674a8e2` |
+| **user.txt** | `/home/arrexel/user.txt` | `ce8846eef0495ad457fd55e7c73cd9fa` |
+| **root.txt** | `/root/root.txt` | `cf37e46838acf7991729c951bef70b98` |
 
 ---
 
