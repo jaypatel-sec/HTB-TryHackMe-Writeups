@@ -12,16 +12,16 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 5 | 15+ |
+| HTB Linux | 6 | 15+ |
 | HTB Windows | 2 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 8 | Ongoing |
-| **Total** | **15** | **40+** |
+| **Total** | **16** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 5 completed
+## HTB Machines — Linux · 6 completed
 
 <details>
 <summary>View writeups</summary>
@@ -33,6 +33,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Postman | Easy | Redis unauthenticated file write, SSH key injection, ssh2john, Webmin 1.910 RCE (CVE-2019-12840) | April 2026 | [writeup](HTB-Machines/Linux/Postman.md) |
 | Lame | Easy | distcc CVE-2004-2687 unauthenticated RCE → SUID nmap --interactive GTFOBins shell escape | May 2026 | [writeup](HTB-Machines/Linux/Lame.md) |
 | Bashed | Easy | phpbash webshell → sudo lateral move to scriptmanager → root cron job overwrites writable test.py | May 2026 | [writeup](HTB-Machines/Linux/Bashed.md) |
+| Codify | Easy | vm2 CVE-2023-30547 sandbox escape → SQLite bcrypt crack → bash [[ ]] pattern match bypass + pspy root cred sniff | May 2026 | [writeup](HTB-Machines/Linux/Codify.md) |
 
 </details>
 
