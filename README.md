@@ -13,11 +13,11 @@ HTB writeups are only published after a machine is confirmed retired.
 | Category | Completed | Target |
 |---|---|---|
 | HTB Linux | 6 | 15+ |
-| HTB Windows | 2 | 10+ |
+| HTB Windows | 3 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 8 | Ongoing |
-| **Total** | **16** | **40+** |
+| **Total** | **17** | **40+** |
 
 ---
 
@@ -39,7 +39,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB Machines — Windows · 2 completed
+## HTB Machines — Windows · 3 completed
 
 <details>
 <summary>View writeups</summary>
@@ -48,6 +48,7 @@ HTB writeups are only published after a machine is confirmed retired.
 |---|---|---|---|---|
 | Legacy | Easy | MS08-067 (CVE-2008-4250) — pre-auth RCE via SMB netapi32.dll stack overflow → NT AUTHORITY\SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Legacy.md) |
 | Blue | Easy | MS17-010 / EternalBlue (CVE-2017-0143) — pre-auth SMB kernel pool corruption → NT AUTHORITY\SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Blue.md) |
+| Jerry | Easy | Default Tomcat credentials (tomcat:s3cret) → WAR reverse shell deploy → NT AUTHORITY\SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Jerry.md) |
 
 </details>
 
