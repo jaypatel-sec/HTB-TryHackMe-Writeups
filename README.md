@@ -16,8 +16,8 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Windows | 3 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
-| TryHackMe Rooms | 8 | Ongoing |
-| **Total** | **19** | **40+** |
+| TryHackMe Rooms | 9 | Ongoing |
+| **Total** | **20** | **40+** |
 
 ---
 
@@ -82,7 +82,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## TryHackMe — Rooms · 8 completed
+## TryHackMe — Rooms · 9 completed
 
 <details>
 <summary>View writeups</summary>
@@ -97,5 +97,6 @@ HTB writeups are only published after a machine is confirmed retired.
 | CMesS | Medium | VHost fuzzing, Gila CMS file upload RCE, world-readable .password.bak, tar wildcard injection | April 2026 | [writeup](TryHackMe/Rooms/CMesS.md) |
 | UltraTech | Medium | Full port scan, JS source review, OS command injection (backtick), SQLite exfil via nc, MD5 cracking, Docker group privesc | April 2026 | [writeup](TryHackMe/Rooms/UltraTech.md) |
 | Anonymous | Medium | FTP anon login + world-writable cron script → reverse shell, LXD group privesc (Alpine image build → privileged container → host filesystem mount) | April 2026 | [writeup](TryHackMe/Rooms/Anonymous.md) |
+| TomGhost | Easy | GhostCat CVE-2020-1938 AJP file read → web.xml credentials → SSH → GPG crack (gpg2john + john) → sudo zip GTFOBins root | May 2026 | [writeup](TryHackMe/Rooms/TomGhost.md) |
 
 </details>
