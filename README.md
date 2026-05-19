@@ -12,16 +12,16 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 9 | 15+ |
+| HTB Linux | 10 | 15+ |
 | HTB Windows | 3 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 9 | Ongoing |
-| **Total** | **21** | **40+** |
+| **Total** | **22** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 9 completed
+## HTB Machines — Linux · 10 completed
 
 <details>
 <summary>View writeups</summary>
@@ -37,6 +37,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Shocker | Easy | Shellshock CVE-2014-6271 via CGI User-Agent → shelly reverse shell → sudo perl GTFOBins root | May 2026 | [writeup](HTB-Machines/Linux/Shocker.md) |
 | Knife | Easy | PHP 8.1.0-dev backdoor CVE-2021-39165 (User-Agentt header RCE) → james reverse shell → sudo knife GTFOBins root | May 2026 | [writeup](HTB-Machines/Linux/Knife.md) |
 | Irked | Easy | UnrealIRCd 3.2.8.1 backdoor CVE-2010-2075 (echo + netcat) → steghide hidden SSH creds → PwnKit CVE-2021-4034 (32-bit static compile) | May 2026 | [writeup](HTB-Machines/Linux/Irked.md) |
+| SolidState | Medium | Apache James 2.3.2 default creds (root:root) → POP3 inbox harvest → SSH as mindy → rbash escape (ssh -t sh) → PwnKit CVE-2021-4034 (32-bit static) | May 2026 | [writeup](HTB-Machines/Linux/SolidState.md) |
 
 </details>
 
