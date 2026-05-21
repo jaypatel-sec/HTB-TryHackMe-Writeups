@@ -12,16 +12,16 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 11 | 15+ |
+| HTB Linux | 12 | 15+ |
 | HTB Windows | 3 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 9 | Ongoing |
-| **Total** | **23** | **40+** |
+| **Total** | **24** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 11 completed
+## HTB Machines — Linux · 12 completed
 
 <details>
 <summary>View writeups</summary>
@@ -39,6 +39,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Irked | Easy | UnrealIRCd 3.2.8.1 backdoor CVE-2010-2075 (echo + netcat) → steghide hidden SSH creds → PwnKit CVE-2021-4034 (32-bit static compile) | May 2026 | [writeup](HTB-Machines/Linux/Irked.md) |
 | SolidState | Medium | Apache James 2.3.2 default creds (root:root) → POP3 inbox harvest → SSH as mindy → rbash escape (ssh -t sh) → PwnKit CVE-2021-4034 (32-bit static) | May 2026 | [writeup](HTB-Machines/Linux/SolidState.md) |
 | Traverxec | Easy | Nostromo 1.9.6 CVE-2019-16278 path traversal RCE → nhttpd.conf homedirs → backup SSH key tar → ssh2john passphrase crack (hunter) → sudo journalctl pager escape (stty rows 2) | May 2026 | [writeup](HTB-Machines/Linux/Traverxec.md) |
+| Nineveh | Medium | phpLiteAdmin SQLite injection + LFI RCE → RSA key in PNG → port knocking → SSH as amrois → chkrootkit 0.49 /tmp/update cron LPE | May 2026 | [writeup](HTB-Machines/Linux/Nineveh.md) |
 
 </details>
 
