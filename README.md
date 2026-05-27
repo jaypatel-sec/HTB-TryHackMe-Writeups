@@ -13,11 +13,11 @@ HTB writeups are only published after a machine is confirmed retired.
 | Category | Completed | Target |
 |---|---|---|
 | HTB Linux | 12 | 15+ |
-| HTB Windows | 4 | 10+ |
+| HTB Windows | 5 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 9 | Ongoing |
-| **Total** | **25** | **40+** |
+| **Total** | **26** | **40+** |
 
 ---
 
@@ -45,7 +45,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB Machines — Windows · 4 completed
+## HTB Machines — Windows · 5 completed
 
 <details>
 <summary>View writeups</summary>
@@ -56,6 +56,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Blue | Easy | MS17-010 / EternalBlue (CVE-2017-0143) — pre-auth SMB kernel pool corruption → NT AUTHORITY\SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Blue.md) |
 | Jerry | Easy | Default Tomcat credentials (tomcat:s3cret) → WAR reverse shell deploy → NT AUTHORITY\SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Jerry.md) |
 | Devel | Easy | Anonymous FTP write access to IIS webroot → ASPX reverse shell (msfvenom) → MS11-046 Chimichurri (afd.sys) → NT AUTHORITY\SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Devel.md) |
+| Chatterbox | Easy | AChat BOF (CVE-2015-1578) → msfvenom x86/unicode_mixed shellcode → shell as Alfred → Registry Winlogon DefaultPassword → Plink reverse SSH tunnel → winexe Administrator shell | May 2026 | [writeup](HTB-Machines/Windows/Chatterbox.md) |
 
 </details>
 
