@@ -13,11 +13,11 @@ HTB writeups are only published after a machine is confirmed retired.
 | Category | Completed | Target |
 |---|---|---|
 | HTB Linux | 12 | 15+ |
-| HTB Windows | 6 | 10+ |
+| HTB Windows | 7 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 9 | Ongoing |
-| **Total** | **27** | **40+** |
+| **Total** | **28** | **40+** |
 
 ---
 
@@ -45,7 +45,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB Machines — Windows · 6 completed
+## HTB Machines — Windows · 7 completed
 
 <details>
 <summary>View writeups</summary>
@@ -58,6 +58,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Devel | Easy | Anonymous FTP write access to IIS webroot → ASPX reverse shell (msfvenom) → MS11-046 Chimichurri (afd.sys) → NT AUTHORITY\SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Devel.md) |
 | Chatterbox | Easy | AChat BOF (CVE-2015-1578) → msfvenom x86/unicode_mixed shellcode → shell as Alfred → Registry Winlogon DefaultPassword → Plink reverse SSH tunnel → winexe Administrator shell | May 2026 | [writeup](HTB-Machines/Windows/Chatterbox.md) |
 | SecNotes | Medium | Second-Order SQLi (registration form → notes leak tyler creds) → SMB write to IIS webroot → nc.exe + PHP revshell → wsl.exe Linux root → bash_history Administrator creds | May 2026 | [writeup](HTB-Machines/Windows/SecNotes.md) |
+| Jeeves | Medium | Jenkins Groovy Script Console unauthenticated RCE → web_delivery Meterpreter → SeImpersonatePrivilege → MS16-075 NBNS reflection → SYSTEM token → root flag in NTFS ADS | May 2026 | [writeup](HTB-Machines/Windows/Jeeves.md) |
 
 </details>
 
