@@ -16,8 +16,8 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Windows | 8 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
-| TryHackMe Rooms | 9 | Ongoing |
-| **Total** | **29** | **40+** |
+| TryHackMe Rooms | 10 | Ongoing |
+| **Total** | **30** | **40+** |
 
 ---
 
@@ -91,7 +91,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## TryHackMe — Rooms · 9 completed
+## TryHackMe — Rooms · 10 completed
 
 <details>
 <summary>View writeups</summary>
@@ -107,5 +107,6 @@ HTB writeups are only published after a machine is confirmed retired.
 | UltraTech | Medium | Full port scan, JS source review, OS command injection (backtick), SQLite exfil via nc, MD5 cracking, Docker group privesc | April 2026 | [writeup](TryHackMe/Rooms/UltraTech.md) |
 | Anonymous | Medium | FTP anon login + world-writable cron script → reverse shell, LXD group privesc (Alpine image build → privileged container → host filesystem mount) | April 2026 | [writeup](TryHackMe/Rooms/Anonymous.md) |
 | TomGhost | Easy | GhostCat CVE-2020-1938 AJP file read → web.xml credentials → SSH → GPG crack (gpg2john + john) → sudo zip GTFOBins root | May 2026 | [writeup](TryHackMe/Rooms/TomGhost.md) |
+| Steel Mountain | Medium | Rejetto HFS 2.3 CVE-2014-6287 (39161.py) → reverse shell as bill → PowerUp.ps1 unquoted service path (AdvancedSystemCareService9) → Advanced.exe → sc restart → SYSTEM | May 2026 | [writeup](TryHackMe/Rooms/Steel-Mountain.md) |
 
 </details>
