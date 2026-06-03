@@ -13,11 +13,11 @@ HTB writeups are only published after a machine is confirmed retired.
 | Category | Completed | Target |
 |---|---|---|
 | HTB Linux | 12 | 15+ |
-| HTB Windows | 8 | 10+ |
+| HTB Windows | 9 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 10 | Ongoing |
-| **Total** | **30** | **40+** |
+| **Total** | **31** | **40+** |
 
 ---
 
@@ -45,7 +45,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB Machines — Windows · 8 completed
+## HTB Machines — Windows · 9 completed
 
 <details>
 <summary>View writeups</summary>
@@ -60,6 +60,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | SecNotes | Medium | Second-Order SQLi (registration form → notes leak tyler creds) → SMB write to IIS webroot → nc.exe + PHP revshell → wsl.exe Linux root → bash_history Administrator creds | May 2026 | [writeup](HTB-Machines/Windows/SecNotes.md) |
 | Jeeves | Medium | Jenkins Groovy Script Console unauthenticated RCE → web_delivery Meterpreter → SeImpersonatePrivilege → MS16-075 NBNS reflection → SYSTEM token → root flag in NTFS ADS | May 2026 | [writeup](HTB-Machines/Windows/Jeeves.md) |
 | Access | Easy | Anonymous FTP → backup.mdb credential extraction (mdb-tools) → Access Control.pst email (readpst) → Telnet as security → cmdkey cached Administrator credential → runas /savecred | May 2026 | [writeup](HTB-Machines/Windows/Access.md) |
+| Arctic | Easy | ColdFusion 8.0.1 FCKeditor CVE-2009-2265 arbitrary file upload → JSP web shell → reverse shell as tolis → SeImpersonatePrivilege → Juicy Potato SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Arctic.md) |
 
 </details>
 
