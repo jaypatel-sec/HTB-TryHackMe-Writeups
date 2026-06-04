@@ -13,11 +13,11 @@ HTB writeups are only published after a machine is confirmed retired.
 | Category | Completed | Target |
 |---|---|---|
 | HTB Linux | 12 | 15+ |
-| HTB Windows | 9 | 10+ |
+| HTB Windows | 10 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 10 | Ongoing |
-| **Total** | **31** | **40+** |
+| **Total** | **32** | **40+** |
 
 ---
 
@@ -45,7 +45,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB Machines — Windows · 9 completed
+## HTB Machines — Windows · 10 completed
 
 <details>
 <summary>View writeups</summary>
@@ -61,6 +61,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Jeeves | Medium | Jenkins Groovy Script Console unauthenticated RCE → web_delivery Meterpreter → SeImpersonatePrivilege → MS16-075 NBNS reflection → SYSTEM token → root flag in NTFS ADS | May 2026 | [writeup](HTB-Machines/Windows/Jeeves.md) |
 | Access | Easy | Anonymous FTP → backup.mdb credential extraction (mdb-tools) → Access Control.pst email (readpst) → Telnet as security → cmdkey cached Administrator credential → runas /savecred | May 2026 | [writeup](HTB-Machines/Windows/Access.md) |
 | Arctic | Easy | ColdFusion 8.0.1 FCKeditor CVE-2009-2265 arbitrary file upload → JSP web shell → reverse shell as tolis → SeImpersonatePrivilege → Juicy Potato SYSTEM | May 2026 | [writeup](HTB-Machines/Windows/Arctic.md) |
+| Bastard | Medium | Drupal 7.54 CVE-2018-7600 (Drupalgeddon2) form cache poisoning → RCE as iusr → SeImpersonatePrivilege → Juicy Potato SYSTEM | June 2026 | [writeup](HTB-Machines/Windows/Bastard.md) |
 
 </details>
 
