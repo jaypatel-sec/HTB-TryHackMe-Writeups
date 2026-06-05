@@ -16,8 +16,8 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Windows | 10 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
-| TryHackMe Rooms | 10 | Ongoing |
-| **Total** | **32** | **40+** |
+| TryHackMe Rooms | 11 | Ongoing |
+| **Total** | **33** | **40+** |
 
 ---
 
@@ -93,7 +93,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## TryHackMe — Rooms · 10 completed
+## TryHackMe — Rooms · 11 completed
 
 <details>
 <summary>View writeups</summary>
@@ -110,5 +110,6 @@ HTB writeups are only published after a machine is confirmed retired.
 | Anonymous | Medium | FTP anon login + world-writable cron script → reverse shell, LXD group privesc (Alpine image build → privileged container → host filesystem mount) | April 2026 | [writeup](TryHackMe/Rooms/Anonymous.md) |
 | TomGhost | Easy | GhostCat CVE-2020-1938 AJP file read → web.xml credentials → SSH → GPG crack (gpg2john + john) → sudo zip GTFOBins root | May 2026 | [writeup](TryHackMe/Rooms/TomGhost.md) |
 | Steel Mountain | Medium | Rejetto HFS 2.3 CVE-2014-6287 (39161.py) → reverse shell as bill → PowerUp.ps1 unquoted service path (AdvancedSystemCareService9) → Advanced.exe → sc restart → SYSTEM | May 2026 | [writeup](TryHackMe/Rooms/Steel-Mountain.md) |
+| Alfred | Easy | Default credentials (admin:admin) → Jenkins Groovy Script Console RCE → Meterpreter → process migration to SYSTEM svchost.exe → Incognito token impersonation | June 2026 | [writeup](TryHackMe/Rooms/Alfred.md) |
 
 </details>
