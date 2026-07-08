@@ -28,11 +28,11 @@ HTB writeups are only published after a machine is confirmed retired.
 | Category | Completed | Target |
 |---|---|---|
 | HTB Linux | 12 | 15+ |
-| HTB Windows | 13 | 10+ |
+| HTB Windows | 14 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
-| **Total** | **36** | **40+** |
+| **Total** | **37** | **40+** |
 
 ---
 
@@ -60,7 +60,7 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB Machines — Windows · 13 completed
+## HTB Machines — Windows · 14 completed
 
 <details>
 <summary>View writeups</summary>
@@ -80,6 +80,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Bastion | Easy | Anonymous SMB → VHD mount (guestmount) → SAM/SYSTEM offline secretsdump → NTLM crack → SSH as L4mpje → mRemoteNG confCons.xml decrypt → SSH as Administrator | June 2026 | [writeup](HTB-Machines/Windows/Bastion.md) |
 | Querier | Medium | Anonymous SMB → XLSM VBA macro creds → MSSQL xp_dirtree NTLMv2 capture → hashcat crack → sysadmin xp_cmdshell RCE → SeImpersonatePrivilege → PrintSpoofer SYSTEM | June 2026 | [writeup](HTB-Machines/Windows/Querier.md) |
 | Optimum | Easy | CVE-2014-6287 Rejetto HFS 2.3 null byte RCE (no auth) → Meterpreter as kostas → x86→x64 migration to explorer.exe → MS16-032 Secondary Logon race condition → NT AUTHORITY\SYSTEM | June 2026 | [writeup](HTB-Machines/Windows/Optimum.md) |
+| Grandpa | Easy | IIS 6.0 WebDAV CVE-2017-7269 ScStoragePathFromUrl buffer overflow → Meterpreter as Network Service → migrate to davcdata.exe → MS14-070 tcpip.sys ioctl → NT AUTHORITY\SYSTEM | June 2026 | [writeup](HTB-Machines/Windows/Grandpa.md) |
 
 </details>
 
