@@ -27,16 +27,16 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 12 | 15+ |
+| HTB Linux | 13 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
-| **Total** | **38** | **40+** |
+| **Total** | **39** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 12 completed
+## HTB Machines — Linux · 13 completed
 
 <details>
 <summary>View writeups</summary>
@@ -55,6 +55,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | SolidState | Medium | Apache James 2.3.2 default creds (root:root) → POP3 inbox harvest → SSH as mindy → rbash escape (ssh -t sh) → PwnKit CVE-2021-4034 (32-bit static) | May 2026 | [writeup](HTB-Machines/Linux/SolidState.md) |
 | Traverxec | Easy | Nostromo 1.9.6 CVE-2019-16278 path traversal RCE → nhttpd.conf homedirs → backup SSH key tar → ssh2john passphrase crack (hunter) → sudo journalctl pager escape (stty rows 2) | May 2026 | [writeup](HTB-Machines/Linux/Traverxec.md) |
 | Nineveh | Medium | phpLiteAdmin SQLite injection + LFI RCE → RSA key in PNG → port knocking → SSH as amrois → chkrootkit 0.49 /tmp/update cron LPE | May 2026 | [writeup](HTB-Machines/Linux/Nineveh.md) |
+| Delivery | Easy | TicketTrick osTicket email alias → MatterMost Internal channel cred leak → SSH as maildeliverer → CVE-2021-4034 PwnKit pkexec → root (Path 2: config.json MySQL creds → bcrypt hash → hashcat best64 wordlist → john crack → su root) | July 2026 | [writeup](HTB-Machines/Linux/Delivery.md) |
 
 </details>
 
