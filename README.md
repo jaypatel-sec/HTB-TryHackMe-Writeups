@@ -27,16 +27,16 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 14 | 15+ |
+| HTB Linux | 15 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
-| **Total** | **40** | **40+** |
+| **Total** | **41** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 14 completed
+## HTB Machines — Linux · 15 completed
 
 <details>
 <summary>View writeups</summary>
@@ -57,6 +57,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Nineveh | Medium | phpLiteAdmin SQLite injection + LFI RCE → RSA key in PNG → port knocking → SSH as amrois → chkrootkit 0.49 /tmp/update cron LPE | May 2026 | [writeup](HTB-Machines/Linux/Nineveh.md) |
 | Delivery | Easy | TicketTrick osTicket email alias → MatterMost Internal channel cred leak → SSH as maildeliverer → CVE-2021-4034 PwnKit pkexec → root (Path 2: config.json MySQL creds → bcrypt hash → hashcat best64 wordlist → john crack → su root) | July 2026 | [writeup](HTB-Machines/Linux/Delivery.md) |
 | Keeper | Easy | Request Tracker default credentials → plaintext lnorgaard password in user comments → SSH foothold → KeePass memory dump CVE-2023-32784 → PuTTY private key conversion → root SSH | July 2026 | [writeup](HTB-Machines/Linux/Keeper.md) |
+| Analytics | Easy | CVE-2023-38646 Metabase Pre-Auth RCE via setup-token abuse → Docker container shell → printenv credential leak → SSH as metalytics → GameOver(lay) CVE-2023-2640/CVE-2023-32629 OverlayFS LPE → root | July 2026 | [writeup](HTB-Machines/Linux/Analytics.md) |
 
 </details>
 
