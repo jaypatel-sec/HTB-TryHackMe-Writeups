@@ -27,16 +27,16 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 15 | 15+ |
+| HTB Linux | 16 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
 | HTB Web Challenges | 0 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
-| **Total** | **41** | **40+** |
+| **Total** | **42** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 15 completed
+## HTB Machines — Linux · 16 completed
 
 <details>
 <summary>View writeups</summary>
@@ -58,6 +58,7 @@ HTB writeups are only published after a machine is confirmed retired.
 | Delivery | Easy | TicketTrick osTicket email alias → MatterMost Internal channel cred leak → SSH as maildeliverer → CVE-2021-4034 PwnKit pkexec → root (Path 2: config.json MySQL creds → bcrypt hash → hashcat best64 wordlist → john crack → su root) | July 2026 | [writeup](HTB-Machines/Linux/Delivery.md) |
 | Keeper | Easy | Request Tracker default credentials → plaintext lnorgaard password in user comments → SSH foothold → KeePass memory dump CVE-2023-32784 → PuTTY private key conversion → root SSH | July 2026 | [writeup](HTB-Machines/Linux/Keeper.md) |
 | Analytics | Easy | CVE-2023-38646 Metabase Pre-Auth RCE via setup-token abuse → Docker container shell → printenv credential leak → SSH as metalytics → GameOver(lay) CVE-2023-2640/CVE-2023-32629 OverlayFS LPE → root | July 2026 | [writeup](HTB-Machines/Linux/Analytics.md) |
+| Inception | Hard | dompdf v0.6.0 LFI (EDB-33004) → php://filter file read → Apache config enumeration → WebDAV md5crypt crack (babygurl69) → PHP webshell upload → wp-config DB cred → Squid proxy SSH pivot (cobb) → sudo su (container root) → static nmap → FTP anon crontab read → TFTP APT Pre-Invoke RCE → host root | July 2026 | [writeup](HTB-Machines/Linux/Inception.md) |
 
 </details>
 
