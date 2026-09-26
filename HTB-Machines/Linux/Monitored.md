@@ -386,7 +386,7 @@ nagios@monitored:~$ cat /home/nagios/user.txt
 ```
 
 ```
-HTB{flag_redacted}
+52e9eeb7cfb90df00fd948d8bfdf9110
 ```
 
 ---
@@ -562,7 +562,7 @@ root@monitored:~# cat /root/root.txt
 ```
 
 ```
-HTB{flag_redacted}
+293d53f4eefe3b27c6541015cc3706e9
 ```
 
 ---
@@ -571,8 +571,8 @@ HTB{flag_redacted}
 
 | Flag | Value |
 |------|-------|
-| User Flag | `HTB{flag_redacted}` |
-| Root Flag | `HTB{flag_redacted}` |
+| User Flag | `52e9eeb7cfb90df00fd948d8bfdf9110` |
+| Root Flag | `293d53f4eefe3b27c6541015cc3706e9` |
 
 ---
 
@@ -619,7 +619,7 @@ Applied configuration
 Started nc -lvvp 4444 listener
 Navigated to Monitoring -> Hosts -> localhost -> set Check Command to ashell -> Run check command
 Reverse shell received as nagios
-Captured user flag from /home/nagios/user.txt
+Captured user flag from /home/nagios/user.txt: 52e9eeb7cfb90df00fd948d8bfdf9110
 Ran sudo -l -> found getprofile.sh NOPASSWD
 Read getprofile.sh source -> identified tail of phpmailer.log without symlink validation
 Confirmed tmp/ directory is writable by nagios group
@@ -630,7 +630,7 @@ Ran sudo /usr/local/nagiosxi/scripts/components/getprofile.sh 1
 Copied profile.zip to /tmp -> unzipped -> read phpmailer.log -> root's SSH private key
 Saved key locally, chmod 600 id_rsa
 SSH'd as root@nagios.monitored.htb -i id_rsa -> root shell obtained
-Captured root flag from /root/root.txt
+Captured root flag from /root/root.txt: 293d53f4eefe3b27c6541015cc3706e9
 ```
 
 ---
