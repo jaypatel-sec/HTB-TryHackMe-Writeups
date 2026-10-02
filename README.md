@@ -27,16 +27,16 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 17 | 15+ |
+| HTB Linux | 16 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
-| HTB Web Challenges | 0 | 9+ |
+| HTB Web Challenges | 1 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
 | **Total** | **43** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 17 completed
+## HTB Machines — Linux · 16 completed
 
 <details>
 <summary>View writeups</summary>
@@ -59,7 +59,6 @@ HTB writeups are only published after a machine is confirmed retired.
 | Keeper | Easy | Request Tracker default credentials → plaintext lnorgaard password in user comments → SSH foothold → KeePass memory dump CVE-2023-32784 → PuTTY private key conversion → root SSH | July 2026 | [writeup](HTB-Machines/Linux/Keeper.md) |
 | Analytics | Easy | CVE-2023-38646 Metabase Pre-Auth RCE via setup-token abuse → Docker container shell → printenv credential leak → SSH as metalytics → GameOver(lay) CVE-2023-2640/CVE-2023-32629 OverlayFS LPE → root | July 2026 | [writeup](HTB-Machines/Linux/Analytics.md) |
 | Inception | Hard | dompdf v0.6.0 LFI (EDB-33004) → php://filter file read → Apache config enumeration → WebDAV md5crypt crack (babygurl69) → PHP webshell upload → wp-config DB cred → Squid proxy SSH pivot (cobb) → sudo su (container root) → static nmap → FTP anon crontab read → TFTP APT Pre-Invoke RCE → host root | July 2026 | [writeup](HTB-Machines/Linux/Inception.md) |
-| Monitored | Medium | SNMP process table cred leak (svc:XjH7VCehowpR1xZB) → Nagios XI API disabled account bypass → CVE-2023-40931 SQLi → nagiosadmin API key → check command RCE (nagios) → sudo getprofile.sh symlink → /root/.ssh/id_rsa extraction → root SSH | September 2026 | [writeup](HTB-Machines/Linux/Monitored.md) |
 
 </details>
 
@@ -105,14 +104,14 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB — Web Challenges · 0 completed
+## HTB — Web Challenges · 1 completed
 
 <details>
 <summary>View writeups</summary>
 
-| Challenge | Key Technique | Date | Writeup |
-|---|---|---|---|
-| — | — | — | — |
+| Challenge | Difficulty | Key Technique | Date | Writeup |
+|---|---|---|---|---|
+| Monitored | Medium | SNMP process table cred leak (svc:XjH7VCehowpR1xZB) → Nagios XI API disabled account bypass → CVE-2023-40931 SQLi → nagiosadmin API key → check command RCE (nagios) → sudo getprofile.sh symlink → /root/.ssh/id_rsa extraction → root SSH | September 2026 | [writeup](HTB-Challenges/Web/Monitored.md) |
 
 </details>
 
