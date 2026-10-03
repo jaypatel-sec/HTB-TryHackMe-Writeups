@@ -27,23 +27,22 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Category | Completed | Target |
 |---|---|---|
-| HTB Linux | 17 | 15+ |
+| HTB Linux | 16 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
-| HTB Web Challenges | 1 | 9+ |
+| HTB Web Challenges | 2 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
 | **Total** | **44** | **40+** |
 
 ---
 
-## HTB Machines — Linux · 17 completed
+## HTB Machines — Linux · 16 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Machine | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
-| Tabby | Easy | LFI → Tomcat Manager credential extraction → WAR reverse shell → CVE-2021-4034 PwnKit root | October 2026 | [writeup](HTB-Machines/Linux/Tabby.md) |
 | Valentine | Easy | Heartbleed (CVE-2014-0160) memory leak → SSH key decryption → tmux root socket | April 2026 | [writeup](HTB-Machines/Linux/Valentine.md) |
 | Underpass | Easy | UDP scan → SNMP default community string → daloRADIUS default creds → MD5 crack → mosh-server sudo privesc | April 2026 | [writeup](HTB-Machines/Linux/Underpass.md) |
 | Postman | Easy | Redis unauthenticated file write, SSH key injection, ssh2john, Webmin 1.910 RCE (CVE-2019-12840) | April 2026 | [writeup](HTB-Machines/Linux/Postman.md) |
@@ -105,13 +104,14 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB — Web Challenges · 1 completed
+## HTB — Web Challenges · 2 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Challenge | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
+| Tabby | Easy | LFI → Tomcat Manager credential extraction → WAR reverse shell → CVE-2021-4034 PwnKit root | October 2026 | [writeup](HTB-Challenges/Web/Tabby.md) |
 | Monitored | Medium | SNMP process table cred leak (svc:XjH7VCehowpR1xZB) → Nagios XI API disabled account bypass → CVE-2023-40931 SQLi → nagiosadmin API key → check command RCE (nagios) → sudo getprofile.sh symlink → /root/.ssh/id_rsa extraction → root SSH | September 2026 | [writeup](HTB-Challenges/Web/Monitored.md) |
 
 </details>
