@@ -30,9 +30,9 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Linux | 16 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
-| HTB Web Challenges | 2 | 9+ |
+| HTB Web Challenges | 3 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
-| **Total** | **44** | **40+** |
+| **Total** | **45** | **40+** |
 
 ---
 
@@ -104,13 +104,14 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB — Web Challenges · 2 completed
+## HTB — Web Challenges · 3 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Challenge | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
+| Trick | Easy | DNS AXFR → SQLi FILE privilege → LFI SSH key extraction → fail2ban actionban SUID bash | October 2026 | [writeup](HTB-Challenges/Web/Trick.md) |
 | Tabby | Easy | LFI → Tomcat Manager credential extraction → WAR reverse shell → CVE-2021-4034 PwnKit root | October 2026 | [writeup](HTB-Challenges/Web/Tabby.md) |
 | Monitored | Medium | SNMP process table cred leak (svc:XjH7VCehowpR1xZB) → Nagios XI API disabled account bypass → CVE-2023-40931 SQLi → nagiosadmin API key → check command RCE (nagios) → sudo getprofile.sh symlink → /root/.ssh/id_rsa extraction → root SSH | September 2026 | [writeup](HTB-Challenges/Web/Monitored.md) |
 
