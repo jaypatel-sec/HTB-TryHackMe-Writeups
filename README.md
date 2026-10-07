@@ -30,9 +30,9 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Linux | 16 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
-| HTB Web Challenges | 5 | 9+ |
+| HTB Web Challenges | 6 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
-| **Total** | **47** | **40+** |
+| **Total** | **48** | **40+** |
 
 ---
 
@@ -104,13 +104,14 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB — Web Challenges · 5 completed
+## HTB — Web Challenges · 6 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Challenge | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
+| Usage | Easy | Boolean-blind SQLi on /forget-password → bcrypt crack (whatever1) → CVE-2023-24249 Laravel Admin .jpg.php upload → reverse shell (dash) → .monitrc plaintext creds → credential reuse (xander) → 7zip @listfile symlink → root SSH key | October 2026 | [writeup](HTB-Challenges/Web/Usage.md) |
 | Headless | Easy | Blind XSS via User-Agent header → is_admin cookie exfiltration → OS command injection in date parameter → reverse shell (dvir) → sudo syscheck relative path hijack → /tmp/initdb.sh SUID bash root | October 2026 | [writeup](HTB-Challenges/Web/Headless.md) |
 | Union | Medium | Manual UNION SQLi → MySQL FILE read → SSH unlock + credential reuse → X-Forwarded-For command injection → www-data sudo root | October 2026 | [writeup](HTB-Challenges/Web/Union.md) |
 | Trick | Easy | DNS AXFR → SQLi FILE privilege → LFI SSH key extraction → fail2ban actionban SUID bash | October 2026 | [writeup](HTB-Challenges/Web/Trick.md) |
