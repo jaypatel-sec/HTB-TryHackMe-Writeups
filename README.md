@@ -111,12 +111,12 @@ HTB writeups are only published after a machine is confirmed retired.
 
 | Challenge | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
-| Usage | Easy | Boolean-blind SQLi on /forget-password → bcrypt crack (whatever1) → CVE-2023-24249 Laravel Admin .jpg.php upload → reverse shell (dash) → .monitrc plaintext creds → credential reuse (xander) → 7zip @listfile symlink → root SSH key | October 2026 | [writeup](HTB-Challenges/Web/Usage.md) |
-| Headless | Easy | Blind XSS via User-Agent header → is_admin cookie exfiltration → OS command injection in date parameter → reverse shell (dvir) → sudo syscheck relative path hijack → /tmp/initdb.sh SUID bash root | October 2026 | [writeup](HTB-Challenges/Web/Headless.md) |
-| Union | Medium | Manual UNION SQLi → MySQL FILE read → SSH unlock + credential reuse → X-Forwarded-For command injection → www-data sudo root | October 2026 | [writeup](HTB-Challenges/Web/Union.md) |
-| Trick | Easy | DNS AXFR → SQLi FILE privilege → LFI SSH key extraction → fail2ban actionban SUID bash | October 2026 | [writeup](HTB-Challenges/Web/Trick.md) |
-| Tabby | Easy | LFI → Tomcat Manager credential extraction → WAR reverse shell → CVE-2021-4034 PwnKit root | October 2026 | [writeup](HTB-Challenges/Web/Tabby.md) |
-| Monitored | Medium | SNMP process table cred leak (svc:XjH7VCehowpR1xZB) → Nagios XI API disabled account bypass → CVE-2023-40931 SQLi → nagiosadmin API key → check command RCE (nagios) → sudo getprofile.sh symlink → /root/.ssh/id_rsa extraction → root SSH | September 2026 | [writeup](HTB-Challenges/Web/Monitored.md) |
+| Usage | Easy | Boolean-blind SQLi on /forget-password → bcrypt crack (whatever1) → CVE-2023-24249 Laravel Admin .jpg.php upload → reverse shell (dash) → .monitrc plaintext creds → credential reuse (xander) → 7zip @listfile symlink → root SSH key | October 2026 | [writeup](HTB-Web-Challenges/Usage.md) |
+| Headless | Easy | Blind XSS via User-Agent header → is_admin cookie exfiltration → OS command injection in date parameter → reverse shell (dvir) → sudo syscheck relative path hijack → /tmp/initdb.sh SUID bash root | October 2026 | [writeup](HTB-Web-Challenges/Headless.md) |
+| Union | Medium | Manual UNION SQLi → MySQL FILE read → SSH unlock + credential reuse → X-Forwarded-For command injection → www-data sudo root | October 2026 | [writeup](HTB-Web-Challenges/Union.md) |
+| Trick | Easy | DNS AXFR → SQLi FILE privilege → LFI SSH key extraction → fail2ban actionban SUID bash | October 2026 | [writeup](HTB-Web-Challenges/Trick.md) |
+| Tabby | Easy | LFI → Tomcat Manager credential extraction → WAR reverse shell → CVE-2021-4034 PwnKit root | October 2026 | [writeup](HTB-Web-Challenges/Tabby.md) |
+| Monitored | Medium | SNMP process table cred leak (svc:XjH7VCehowpR1xZB) → Nagios XI API disabled account bypass → CVE-2023-40931 SQLi → nagiosadmin API key → check command RCE (nagios) → sudo getprofile.sh symlink → /root/.ssh/id_rsa extraction → root SSH | September 2026 | [writeup](HTB-Web-Challenges/Monitored.md) |
 
 </details>
 
