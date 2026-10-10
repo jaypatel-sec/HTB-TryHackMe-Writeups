@@ -30,9 +30,9 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Linux | 16 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
-| HTB Web Challenges | 8 | 9+ |
+| HTB Web Challenges | 9 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
-| **Total** | **50** | **40+** |
+| **Total** | **51** | **40+** |
 
 ---
 
@@ -104,14 +104,15 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB — Web Challenges · 8 completed
+## HTB — Web Challenges · 9 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Challenge | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
-| Bounty | Easy | ffuf discovery → `web.config` IIS handler registration bypass (`.config` → `asp.dll`) → Classic ASP `WScript.Shell` reverse shell → `SeImpersonatePrivilege` → JuicyPotato SYSTEM | October 2026 | [writeup](HTB-Web-Challenges/Bounty.md) |
+| Soccer | Easy | CVE-2021-45010 Tiny File Manager default creds + file upload RCE → Nginx vhost enumeration → blind SQLi over WebSocket (sqlmap ws://) → credential reuse (player) → doas dstat Python plugin hijack → root | October 2026 | [writeup](HTB-Web-Challenges/Soccer.md) |
+| Bounty | Easy | `web.config` IIS handler registration bypass (`.config` → `asp.dll`) → Classic ASP `WScript.Shell` reverse shell → `SeImpersonatePrivilege` → JuicyPotato SYSTEM | October 2026 | [writeup](HTB-Web-Challenges/Bounty.md) |
 | PermX | Easy | ffuf vHost fuzzing → Chamilo LMS CVE-2023-4220 unauthenticated file upload RCE → plaintext DB creds → credential reuse (mtz) → acl.sh symlink abuse (setfacl on /etc/sudoers or /etc/passwd) → root | October 2026 | [writeup](HTB-Web-Challenges/PermX.md) |
 | Usage | Easy | Boolean-blind SQLi on /forget-password → bcrypt crack (whatever1) → CVE-2023-24249 Laravel Admin .jpg.php upload → reverse shell (dash) → .monitrc plaintext creds → credential reuse (xander) → 7zip @listfile symlink → root SSH key | October 2026 | [writeup](HTB-Web-Challenges/Usage.md) |
 | Headless | Easy | Blind XSS via User-Agent header → is_admin cookie exfiltration → OS command injection in date parameter → reverse shell (dvir) → sudo syscheck relative path hijack → /tmp/initdb.sh SUID bash root | October 2026 | [writeup](HTB-Web-Challenges/Headless.md) |
