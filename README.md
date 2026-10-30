@@ -30,9 +30,9 @@ HTB writeups are only published after a machine is confirmed retired.
 | HTB Linux | 16 | 15+ |
 | HTB Windows | 15 | 10+ |
 | HTB Active Directory | 0 | 10+ |
-| HTB Web Challenges | 12 | 9+ |
+| HTB Web Challenges | 13 | 9+ |
 | TryHackMe Rooms | 11 | Ongoing |
-| **Total** | **54** | **40+** |
+| **Total** | **55** | **40+** |
 
 ---
 
@@ -104,13 +104,14 @@ HTB writeups are only published after a machine is confirmed retired.
 
 ---
 
-## HTB — Web Challenges · 12 completed
+## HTB — Web Challenges · 13 completed
 
 <details>
 <summary>View writeups</summary>
 
 | Challenge | Difficulty | Key Technique | Date | Writeup |
 |---|---|---|---|---|
+| Granny | Easy | WebDAV PUT+MOVE extension bypass on IIS 6.0 (ASPX shell via `.txt` rename) → `nt authority\network service` → `SeImpersonatePrivilege` → CVE-2008-1436 Churrasco token kidnapping (RPCSS thread SYSTEM token steal) → SYSTEM | October 2026 | [writeup](HTB-Web-Challenges/Granny.md) |
 | Nibbles | Easy | HTML comment path disclosure → Nibbleblog v4.0.3 → `config.xml`/`users.xml` cred inference (`admin:nibbles`) → CVE-2015-6967 My Image plugin PHP upload RCE (nibbler) → `sudo -l` world-writable `monitor.sh` → SUID bash copy → `euid=0` root | October 2026 | [writeup](HTB-Web-Challenges/Nibbles.md) |
 | Craft | Medium | Gogs public repo → `eval()` injection via `abv` field (Python RCE) → Docker container root → `settings.py` MySQL creds → pymysql user table dump → Gogs login as gilfoyle (private repo) → SSH key + passphrase reuse → `.vault-token` → Vault SSH OTP root | October 2026 | [writeup](HTB-Web-Challenges/Craft.md) |
 | MetaTwo | Easy | CVE-2022-0739 BookingPress unauthenticated SQLi → phpass crack (manager) → CVE-2021-29447 WordPress XXE via .wav (PHP 8) → wp-config.php FTP creds → send_email.php SSH creds (jnelson) → Passpie GPG key crack (blink182) → su root | October 2026 | [writeup](HTB-Web-Challenges/MetaTwo.md) |
